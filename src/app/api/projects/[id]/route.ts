@@ -13,9 +13,9 @@ export async function GET(
       success: true,
       data: loadedProject
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
-      { success: false, error: error.message || "Failed to load project" },
+      { success: false, error: (error as Error).message || "Failed to load project" },
       { status: 404 }
     );
   }

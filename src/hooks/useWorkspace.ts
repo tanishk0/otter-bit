@@ -140,9 +140,9 @@ server.listen(PORT, () => {
             }
           })
         );
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error("Failed to spawn process:", err);
-        setTerminalLogs((prev) => prev + `\n[Error] Failed to spawn node process: ${err.message}\n`);
+        setTerminalLogs((prev) => prev + `\n[Error] Failed to spawn node process: ${(err as Error)?.message}\n`);
       }
     },
     [killCurrentProcess]
@@ -207,9 +207,9 @@ server.listen(PORT, () => {
             setCode("");
           }
         }
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error("Workspace initialization error:", err);
-        setError(err.message || "Failed to initialize project workspace");
+        setError((err as Error)?.message || "Failed to initialize project workspace");
       } finally {
         setIsLoading(false);
       }
