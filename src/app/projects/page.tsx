@@ -38,8 +38,8 @@ export default function ProjectsCatalogPage() {
         } else {
           throw new Error(data.error || "Failed to load projects");
         }
-      } catch (err: any) {
-        setError(err.message || "Failed to fetch projects list");
+      } catch (err: unknown) {
+        setError((err as Error)?.message || "Failed to fetch projects list");
       } finally {
         setLoading(false);
       }
@@ -62,6 +62,22 @@ export default function ProjectsCatalogPage() {
   return (
     <div className="min-h-screen bg-[#0d1117] text-gray-100 font-sans p-6 md:p-12">
       <div className="max-w-6xl mx-auto space-y-8">
+        {/* Navigation Breadcrumb */}
+        <div className="flex items-center justify-between">
+          <Link
+            href="/"
+            className="text-xs text-gray-400 hover:text-white transition-colors flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#161b22] border border-[#21262d] hover:border-gray-600"
+          >
+            <span>←</span>
+            <span>Back to Home</span>
+          </Link>
+
+          <Link href="/" className="flex items-center gap-2">
+            <span className="text-lg">🦦</span>
+            <span className="text-xs font-bold text-white tracking-tight">OtterBit</span>
+          </Link>
+        </div>
+
         {/* Page Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#21262d] pb-6">
           <div className="space-y-1.5">
@@ -77,7 +93,7 @@ export default function ProjectsCatalogPage() {
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-xs text-gray-400 font-medium">
+            <span className="text-xs text-gray-400 font-medium bg-[#161b22] px-3 py-1.5 rounded-lg border border-[#21262d]">
               {projects.length} Projects Available
             </span>
           </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useWorkspace, WorkspaceTab } from "@/hooks/useWorkspace";
+import { useWorkspace } from "@/hooks/useWorkspace";
 import FileTree from "@/components/FileTree";
 import CodeEditor from "@/components/CodeEditor";
 import TaskPanel from "@/components/workspace/TaskPanel";

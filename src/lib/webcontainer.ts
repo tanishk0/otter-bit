@@ -1,4 +1,4 @@
-import { WebContainer } from "@webcontainer/api";
+import { WebContainer, FileSystemTree } from "@webcontainer/api";
 
 const globalForWC = globalThis as unknown as {
   webcontainerPromise?: Promise<WebContainer>;
@@ -17,7 +17,7 @@ export async function getWebContainer(): Promise<WebContainer> {
   return globalForWC.webcontainerPromise;
 }
 
-export async function mountProject(files: any): Promise<WebContainer> {
+export async function mountProject(files: FileSystemTree): Promise<WebContainer> {
   const wc = await getWebContainer();
   await wc.mount(files);
   return wc;

@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Guided Dev Learning Workspace",
-  description: "WebContainer-powered code learning environment",
+  title: "OtterBit - AI Guided WebContainer Dev Learning Platform",
+  description: "Learn full-stack development with in-browser Node.js WebContainers, guided tasks, and real-time previews.",
 };
 
 export default function RootLayout({
@@ -25,9 +25,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} min-h-full antialiased`}
     >
-      <body className="h-full w-full overflow-hidden">{children}</body>
+      <body className="min-h-screen w-full bg-[#0d1117] text-gray-100">{children}</body>
     </html>
   );
 }
